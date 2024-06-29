@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+
+        <!-- Definición de la Vista de Árbol para Clientes -->
+        <record id="view_client_tree" model="ir.ui.view">
+            <field name="name">client.tree</field>
+            <field name="model">realestate.client</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <field name="cedula"/>
+                    <field name="salario"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Definición de la Vista de Formulario para Clientes -->
+        <record id="view_client_form" model="ir.ui.view">
+            <field name="name">client.form</field>
+            <field name="model">realestate.client</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                            <field name="cedula"/>
+                            <field name="salario"/>
+                            <field name="foto_cedula" widget="binary" filename="foto_cedula"/>
+                            <field name="informconf" widget="binary" filename="informconf"/>
+                            <field name="liq_salario" widget="binary" filename="liq_salario"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para Clientes -->
+        <record id="action_client" model="ir.actions.act_window">
+            <field name="name">Clients</field>
+            <field name="res_model">realestate.client</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú para Clientes -->
+        <menuitem id="menu_realestate_root" name="Real Estate"/>
+        <menuitem id="first_level_menu_client" name="Client" parent="menu_realestate_root"/>
+        <menuitem id="menu_realestate_client" name="Clients" action="action_client" parent="first_level_menu_client"/>
+
+    </data>
+</odoo>

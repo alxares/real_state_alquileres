@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+        <!-- Definición de la Vista de Árbol para Contratos -->
+        <record id="view_contract_tree" model="ir.ui.view">
+            <field name="name">contract.tree</field>
+            <field name="model">realestate.contract</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="property_id"/>
+                    <field name="client_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Definición de la Vista de Formulario para Contratos -->
+        <record id="view_contract_form" model="ir.ui.view">
+            <field name="name">contract.form</field>
+            <field name="model">realestate.contract</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="property_id"/>
+                            <field name="client_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para Contratos -->
+        <record id="action_contract" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">realestate.contract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_contract_tree"/>
+        </record>
+
+        <!-- Menú para Contratos -->
+        <menuitem id="menu_realestate_root" name="Real Estate"/>
+        <menuitem id="first_level_menu_contract" name="Contracts" parent="menu_realestate_root"/>
+        <menuitem id="menu_realestate_contract" name="Contracts" action="action_contract" parent="first_level_menu_contract"/>
+
+    </data>
+</odoo>

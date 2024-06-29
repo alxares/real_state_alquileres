@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+        <!-- Definición de la Vista de Árbol -->
+        <record id="view_property_tree" model="ir.ui.view">
+            <field name="name">property.tree</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="property_type"/>
+                    <field name="image" widget="image"/> <!--Borrar esto si explota-->
+                    <field name="city"/>
+                    <field name="price"/>
+                    <field name="status"/> <!--para agregar el estado de la propiedad en la vista de arbol-->
+                    <field name="disponibility_date"/>
+                <!--<field name="last_seen"/> esta es una opcion de ultima vista-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Definición de la Vista de Formulario -->
+        <record id="view_property_form" model="ir.ui.view">
+            <field name="name">property.form</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="property_type"/>
+                        <field name="image" widget="image"/> <!--Borrar vista si explota-->
+                        <field name="image_ids" widget="many2many_binary"/> <!--Borrar vista si explota-->
+                        <field name="description"/>
+                        <field name="rooms"/>
+                        <field name="bathrooms"/>
+                        <field name="parking"/>
+                        <field name="address" placeholder="Escribe la dirección de la propiedad"/>
+                        <field name="departamento"/>
+                        <field name="city"/>
+                        <field name="price"/>
+                        <field name="status"/> <!--Estado en el formulario-->
+                        <field name="disponibility_date"/>
+                    <!--<field name="last_seen"/> esta es una opcion de ultima vista --> 
+                        <field name="location" placeholder="Ver ubicación en el mapa" widget="url"/>
+                        <field name="owner_id"  placeholder="Agrega un propietario"/>
+                        <field name="active"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Definición de la Acción -->
+        <record id="action_property" model="ir.actions.act_window">
+            <field name="name">Properties</field>
+            <field name="res_model">realestate.property</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_property_tree"/>
+        </record>
+
+        <!-- Definición del Menú -->
+        <menuitem id="menu_realestate_root" name="Real Estate"/>
+        <menuitem id="first_level_menu" name="Properties" parent="menu_realestate_root"/>
+        <menuitem id="menu_realestate_property" name="Properties" parent="first_level_menu" action="action_property"/>
+    </data>
+</odoo>
