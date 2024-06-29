@@ -17,7 +17,7 @@ Default Odoo Modules: Inventory, Sales, Invoicing, and CRM
 Installation
 
 Clone the repository into your Odoo instance's addons folder.
-bash
+
 git clone https://github.com/alxares/real_state_alquileres.git
 
 Restart the Odoo server.
