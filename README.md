@@ -18,7 +18,7 @@ Installation
 
 Clone the repository into your Odoo instance's addons folder.
 bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/alxares/real_state_alquileres.git
 
 Restart the Odoo server.
 Enable developer mode in Odoo and update the app list.
